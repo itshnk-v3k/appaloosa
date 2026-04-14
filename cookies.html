@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appaloosa — Cookie Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<!-- =============================================
+   SHARED PARTIALS — включается в каждую страницу
+   Копируй этот блок в начало/конец каждого файла
+   ============================================= -->
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  Free shipping in Chișinău &nbsp;·&nbsp; 1-day delivery &nbsp;·&nbsp; appaloosa.co
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <nav class="header-nav">
+      <div class="nav-dropdown">
+        <button>Shop <span class="nav-dropdown-arrow"></span></button>
+        <div class="dropdown-menu">
+          <a href="shop.html?cat=new-arrivals">New Arrivals</a>
+          <a href="shop.html?cat=women">Women</a>
+          <a href="shop.html?cat=men">Men</a>
+          <a href="shop.html?cat=accessories">Accessories</a>
+          <a href="shop.html?cat=sale">Sale</a>
+        </div>
+      </div>
+      <a href="collections.html">Collections</a>
+      <a href="journal.html">Journal</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="index.html" class="header-logo">
+      <div>
+        <div class="header-logo-text">appaloosa</div>
+        <div class="header-logo-sub">Lifestyle &amp; Leisure</div>
+      </div>
+    </a>
+    <div class="header-icons">
+      <button class="header-icon-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+      <button class="header-icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="header-icon-btn" onclick="openCart()" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <div class="mobile-nav-header">
+    <span class="mobile-nav-logo">appaloosa</span>
+    <button class="mobile-nav-close" onclick="closeMobileMenu()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <button onclick="toggleMobileShop()">Shop ▾</button>
+    <div class="mobile-nav-sub" id="mobileShopSub">
+      <a href="shop.html?cat=new-arrivals" onclick="closeMobileMenu()">New Arrivals</a>
+      <a href="shop.html?cat=women" onclick="closeMobileMenu()">Women</a>
+      <a href="shop.html?cat=men" onclick="closeMobileMenu()">Men</a>
+      <a href="shop.html?cat=accessories" onclick="closeMobileMenu()">Accessories</a>
+      <a href="shop.html?cat=sale" onclick="closeMobileMenu()">Sale</a>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <a href="collections.html" onclick="closeMobileMenu()">Collections</a>
+    <a href="journal.html" onclick="closeMobileMenu()">Journal</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="delivery.html" onclick="closeMobileMenu()">Delivery Info</a>
+    <a href="size-guide.html" onclick="closeMobileMenu()">Size Guide</a>
+    <a href="returns.html" onclick="closeMobileMenu()">Returns</a>
+    <a href="track-order.html" onclick="closeMobileMenu()">Track Order</a>
+    <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+    <a href="privacy.html" onclick="closeMobileMenu()">Privacy Policy</a>
+    <a href="terms.html" onclick="closeMobileMenu()">Terms</a>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <span class="search-eyebrow">What are you looking for?</span>
+  <div class="search-input-wrap">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search products, articles…" autocomplete="off">
+    <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></span>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="search-popular" id="searchPopular">
+    <span class="search-popular-label">Popular</span>
+    <div class="search-popular-tags">
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='linen';runSearch('linen')">Linen</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='accessories';runSearch('accessories')">Accessories</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='new arrivals';runSearch('new arrivals')">New Arrivals</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='sale';runSearch('sale')">Sale</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='jacket';runSearch('jacket')">Jacket</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-header">
+    <div>
+      <div class="cart-drawer-title">Your Cart</div>
+      <div class="cart-drawer-count" id="cartCount">0 items</div>
+    </div>
+    <button class="cart-drawer-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-drawer-items" id="cartItems"></div>
+  <div class="cart-drawer-footer" id="cartFooter">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-val" id="cartTotal">€0</span>
+    </div>
+    <p class="cart-note">Taxes included. Free delivery in Chișinău.</p>
+    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal" id="productModal">
+  <div class="product-modal-overlay" onclick="closeProductModal()"></div>
+  <div class="product-modal-panel">
+    <div class="product-modal-gallery" id="modalGallery">
+      <button class="product-modal-close" onclick="closeProductModal()">✕</button>
+      <div class="gallery-slides-wrapper" id="gallerySlides">
+        <div class="gallery-slide"><div class="gallery-slide-num">01</div><div class="gallery-slide-label">Front View</div></div>
+        <div class="gallery-slide"><div class="gallery-slide-num">02</div><div class="gallery-slide-label">Detail</div></div>
+        <div class="gallery-slide"><div class="gallery-slide-num">03</div><div class="gallery-slide-label">Back View</div></div>
+      </div>
+      <button class="gallery-arrow gallery-arrow--prev" onclick="slideGallery(-1)">&#8592;</button>
+      <button class="gallery-arrow gallery-arrow--next" onclick="slideGallery(1)">&#8594;</button>
+      <div class="product-modal-thumbs" id="galleryDots">
+        <button class="product-modal-thumb active" onclick="goToSlide(0)"></button>
+        <button class="product-modal-thumb" onclick="goToSlide(1)"></button>
+        <button class="product-modal-thumb" onclick="goToSlide(2)"></button>
+      </div>
+    </div>
+    <div class="product-modal-body">
+      <div class="modal-breadcrumb">Appaloosa</div>
+      <h2 class="modal-title" id="modalTitle">Product</h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <hr class="modal-divider">
+      <div id="modalColorsWrap">
+        <span class="modal-option-label">Colour — <strong id="modalColorName"></strong></span>
+        <div class="modal-colors" id="modalColors"></div>
+      </div>
+      <div id="modalSizesWrap">
+        <span class="modal-option-label">Size</span>
+        <div class="modal-sizes" id="modalSizes"></div>
+      </div>
+      <button class="modal-add-to-cart" onclick="addToCartFromModal()">Add to Cart</button>
+      <hr class="modal-divider">
+      <p class="modal-desc">A timeless piece crafted from premium materials. Relaxed fit with a refined silhouette — designed to move with you through every moment of the day.</p>
+      <div class="modal-details">
+        <div class="modal-detail-row"><span class="modal-detail-key">Material</span><span class="modal-detail-val">100% Premium Cotton</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Fit</span><span class="modal-detail-val">Relaxed, slightly oversized</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Care</span><span class="modal-detail-val">Machine wash 30°C, lay flat to dry</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Origin</span><span class="modal-detail-val">Made in Portugal</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Delivery</span><span class="modal-detail-val">1-day delivery in Chișinău</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================
+   FULL FOOTER
+   ============================================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo-text">appaloosa</span>
+        <span class="footer-logo-sub">Lifestyle &amp; Leisure</span>
+        <p class="footer-tagline">Curated pieces for those who move through life with intention and grace.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="TikTok">TK</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Pinterest">PI</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Shop</span>
+        <ul>
+          <li><a href="shop.html?cat=new-arrivals">New Arrivals</a></li>
+          <li><a href="shop.html?cat=women">Women</a></li>
+          <li><a href="shop.html?cat=men">Men</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+          <li><a href="shop.html?cat=sale">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Information</span>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="delivery.html">Delivery Info</a></li>
+          <li><a href="size-guide.html">Size Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Help</span>
+        <ul>
+          <li><a href="returns.html">Returns</a></li>
+          <li><a href="track-order.html">Track Order</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Appaloosa Lifestyle &amp; Leisure</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="page-content">
+  <div class="page-hero"><span class="page-hero-eyebrow">Legal</span><h1 class="page-hero-title">Cookie Policy</h1><p class="page-hero-sub">Last updated: January 2025</p></div>
+  <section class="info-page"><div class="container"><div class="info-page-content">
+    <div class="info-section"><h2 class="info-section-title">What Are Cookies?</h2><p>Cookies are small text files that are placed on your device when you visit a website. They help websites function properly, remember your preferences, and provide information to website owners.</p></div>
+    <div class="info-section"><h2 class="info-section-title">How We Use Cookies</h2><p>We use cookies to improve your experience on our site and to understand how you use it. Below is a summary of the types of cookies we use.</p>
+      <table class="info-table"><thead><tr><th>Type</th><th>Purpose</th><th>Duration</th></tr></thead><tbody>
+        <tr><td>Essential</td><td>Required for the shop to function (cart, session)</td><td>Session</td></tr>
+        <tr><td>Functional</td><td>Remember your language and currency preferences</td><td>1 year</td></tr>
+        <tr><td>Analytics</td><td>Understand how visitors use our site (anonymised)</td><td>2 years</td></tr>
+        <tr><td>Marketing</td><td>Show relevant ads on other platforms (only if consented)</td><td>90 days</td></tr>
+      </tbody></table>
+    </div>
+    <div class="info-section"><h2 class="info-section-title">Managing Your Cookies</h2><p>You can control and manage cookies in your browser settings. Please note that disabling certain cookies may affect the functionality of our website — for example, your cart may not save between sessions.</p><p>Most browsers allow you to: view cookies that have been set, block cookies from specific sites, block all third-party cookies, clear all cookies when you close your browser.</p></div>
+    <div class="info-section"><h2 class="info-section-title">Third-Party Cookies</h2><p>Some features on our site use third-party services (such as payment providers and analytics platforms) which may set their own cookies. These are governed by the respective third party's privacy policies.</p></div>
+    <div class="info-section"><h2 class="info-section-title">Contact</h2><p>If you have any questions about our use of cookies, please contact us at <strong style="color:var(--burgundy-dark)">privacy@appaloosa.co</strong>.</p></div>
+  </div></div></section>
+</div>
+<script src="shared.js"></script>
+
+</body>
+</html>

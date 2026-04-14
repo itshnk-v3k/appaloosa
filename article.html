@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appaloosa — Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .article-hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .article-hero-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .article-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--burgundy-dark);
+    line-height: 1.15;
+    max-width: 760px;
+    margin: 0 auto 24px;
+  }
+  .article-hero-meta {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .article-hero-meta span::before {
+    content: '·';
+    margin-right: 20px;
+  }
+  .article-hero-meta span:first-child::before { content: none; }
+  .article-cover {
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    aspect-ratio: 16/7;
+    background: var(--cream-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .article-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 40%, var(--warm-gray) 100%);
+  }
+  .article-cover-label {
+    position: absolute;
+    bottom: 24px;
+    left: 32px;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .article-body p {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.95;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+  .article-body h2 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--burgundy-dark);
+    margin: 52px 0 20px;
+    line-height: 1.2;
+  }
+  .article-body blockquote {
+    margin: 48px 0;
+    padding: 32px 40px;
+    border-left: 2px solid var(--burgundy);
+    background: var(--parchment);
+  }
+  .article-body blockquote p {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--burgundy-dark);
+    font-style: italic;
+    margin: 0;
+  }
+  .article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    transition: color 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .article-back:hover { color: var(--burgundy); }
+  .article-related {
+    background: var(--parchment);
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+  .article-related-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--burgundy-dark);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .article-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 768px) {
+    .article-cover { margin: 40px auto; }
+    .article-body { padding: 0 16px 60px; }
+    .article-related-grid { grid-template-columns: 1fr; gap: 24px; }
+    .article-hero { padding: 60px 16px 40px; }
+    .article-body blockquote { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR --> 
+<div class="announcement-bar">
+  Free shipping in Chișinău &nbsp;·&nbsp; 1-day delivery &nbsp;·&nbsp; appaloosa.co
+</div>
+ 
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <nav class="header-nav">
+      <div class="nav-dropdown">
+        <button>Shop <span class="nav-dropdown-arrow"></span></button>
+        <div class="dropdown-menu">
+          <a href="shop.html?cat=new-arrivals">New Arrivals</a>
+          <a href="shop.html?cat=women">Women</a>
+          <a href="shop.html?cat=men">Men</a>
+          <a href="shop.html?cat=accessories">Accessories</a>
+          <a href="shop.html?cat=sale">Sale</a>
+        </div>
+      </div>
+      <a href="collections.html">Collections</a>
+      <a href="journal.html">Journal</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="index.html" class="header-logo">
+      <div>
+        <div class="header-logo-text">appaloosa</div>
+        <div class="header-logo-sub">Lifestyle &amp; Leisure</div>
+      </div>
+    </a>
+    <div class="header-icons">
+      <button class="header-icon-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+      <button class="header-icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="header-icon-btn" onclick="openCart()" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <div class="mobile-nav-header">
+    <span class="mobile-nav-logo">appaloosa</span>
+    <button class="mobile-nav-close" onclick="closeMobileMenu()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <button onclick="toggleMobileShop()">Shop ▾</button>
+    <div class="mobile-nav-sub" id="mobileShopSub">
+      <a href="shop.html?cat=new-arrivals" onclick="closeMobileMenu()">New Arrivals</a>
+      <a href="shop.html?cat=women" onclick="closeMobileMenu()">Women</a>
+      <a href="shop.html?cat=men" onclick="closeMobileMenu()">Men</a>
+      <a href="shop.html?cat=accessories" onclick="closeMobileMenu()">Accessories</a>
+      <a href="shop.html?cat=sale" onclick="closeMobileMenu()">Sale</a>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <a href="collections.html" onclick="closeMobileMenu()">Collections</a>
+    <a href="journal.html" onclick="closeMobileMenu()">Journal</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="delivery.html" onclick="closeMobileMenu()">Delivery Info</a>
+    <a href="size-guide.html" onclick="closeMobileMenu()">Size Guide</a>
+    <a href="returns.html" onclick="closeMobileMenu()">Returns</a>
+    <a href="track-order.html" onclick="closeMobileMenu()">Track Order</a>
+    <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+    <a href="privacy.html" onclick="closeMobileMenu()">Privacy Policy</a>
+    <a href="terms.html" onclick="closeMobileMenu()">Terms</a>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <span class="search-eyebrow">What are you looking for?</span>
+  <div class="search-input-wrap">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search products, articles…" autocomplete="off">
+    <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></span>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="search-popular" id="searchPopular">
+    <span class="search-popular-label">Popular</span>
+    <div class="search-popular-tags">
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='linen';runSearch('linen')">Linen</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='accessories';runSearch('accessories')">Accessories</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='new arrivals';runSearch('new arrivals')">New Arrivals</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='sale';runSearch('sale')">Sale</button>
+      <button class="search-tag" onclick="document.getElementById('searchInput').value='jacket';runSearch('jacket')">Jacket</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-header">
+    <div>
+      <div class="cart-drawer-title">Your Cart</div>
+      <div class="cart-drawer-count" id="cartCount">0 items</div>
+    </div>
+    <button class="cart-drawer-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-drawer-items" id="cartItems"></div>
+  <div class="cart-drawer-footer" id="cartFooter">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-val" id="cartTotal">€0</span>
+    </div>
+    <p class="cart-note">Taxes included. Free delivery in Chișinău.</p>
+    <button class="cart-checkout-btn">Proceed to Checkout</button>
+    <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal" id="productModal">
+  <div class="product-modal-overlay" onclick="closeProductModal()"></div>
+  <div class="product-modal-panel">
+    <div class="product-modal-gallery" id="modalGallery">
+      <button class="product-modal-close" onclick="closeProductModal()">✕</button>
+      <div class="gallery-slides-wrapper" id="gallerySlides">
+        <div class="gallery-slide"><div class="gallery-slide-num">01</div><div class="gallery-slide-label">Front View</div></div>
+        <div class="gallery-slide"><div class="gallery-slide-num">02</div><div class="gallery-slide-label">Detail</div></div>
+        <div class="gallery-slide"><div class="gallery-slide-num">03</div><div class="gallery-slide-label">Back View</div></div>
+      </div>
+      <button class="gallery-arrow gallery-arrow--prev" onclick="slideGallery(-1)">&#8592;</button>
+      <button class="gallery-arrow gallery-arrow--next" onclick="slideGallery(1)">&#8594;</button>
+      <div class="product-modal-thumbs" id="galleryDots">
+        <button class="product-modal-thumb active" onclick="goToSlide(0)"></button>
+        <button class="product-modal-thumb" onclick="goToSlide(1)"></button>
+        <button class="product-modal-thumb" onclick="goToSlide(2)"></button>
+      </div>
+    </div>
+    <div class="product-modal-body">
+      <div class="modal-breadcrumb">Appaloosa</div>
+      <h2 class="modal-title" id="modalTitle">Product</h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <hr class="modal-divider">
+      <div id="modalColorsWrap">
+        <span class="modal-option-label">Colour — <strong id="modalColorName"></strong></span>
+        <div class="modal-colors" id="modalColors"></div>
+      </div>
+      <div id="modalSizesWrap">
+        <span class="modal-option-label">Size</span>
+        <div class="modal-sizes" id="modalSizes"></div>
+      </div>
+      <button class="modal-add-to-cart" onclick="addToCartFromModal()">Add to Cart</button>
+      <hr class="modal-divider">
+      <p class="modal-desc">A timeless piece crafted from premium materials. Relaxed fit with a refined silhouette — designed to move with you through every moment of the day.</p>
+      <div class="modal-details">
+        <div class="modal-detail-row"><span class="modal-detail-key">Material</span><span class="modal-detail-val">100% Premium Cotton</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Fit</span><span class="modal-detail-val">Relaxed, slightly oversized</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Care</span><span class="modal-detail-val">Machine wash 30°C, lay flat to dry</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Origin</span><span class="modal-detail-val">Made in Portugal</span></div>
+        <div class="modal-detail-row"><span class="modal-detail-key">Delivery</span><span class="modal-detail-val">1-day delivery in Chișinău</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo-text">appaloosa</span>
+        <span class="footer-logo-sub">Lifestyle &amp; Leisure</span>
+        <p class="footer-tagline">Curated pieces for those who move through life with intention and grace.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="TikTok">TK</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Pinterest">PI</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Shop</span>
+        <ul>
+          <li><a href="shop.html?cat=new-arrivals">New Arrivals</a></li>
+          <li><a href="shop.html?cat=women">Women</a></li>
+          <li><a href="shop.html?cat=men">Men</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+          <li><a href="shop.html?cat=sale">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Information</span>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="delivery.html">Delivery Info</a></li>
+          <li><a href="size-guide.html">Size Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Help</span>
+        <ul>
+          <li><a href="returns.html">Returns</a></li>
+          <li><a href="track-order.html">Track Order</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Appaloosa Lifestyle &amp; Leisure</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="page-content">
+  <div class="container">
+
+    <!-- Back link -->
+    <a href="journal.html" class="article-back">← Back to Journal</a>
+
+    <!-- Hero — filled by JS -->
+    <div class="article-hero" id="articleHero">
+      <span class="article-hero-eyebrow" id="articleTag"></span>
+      <h1 class="article-hero-title" id="articleTitle">Loading…</h1>
+      <div class="article-hero-meta">
+        <span id="articleDate"></span>
+        <span id="articleRead"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cover image -->
+  <div class="article-cover container">
+    <span class="article-cover-label">Appaloosa — SS 2025</span>
+  </div>
+
+  <!-- Article body — filled by JS -->
+  <div class="article-body" id="articleBody" style="max-width:680px;margin:0 auto;padding:0 24px;"></div>
+
+  <!-- Related articles -->
+  <section class="article-related">
+    <div class="container">
+      <h2 class="article-related-title">More from the Journal</h2>
+      <div class="article-related-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <span class="newsletter-eyebrow">Stay close</span>
+        <h2 class="newsletter-title">Letters from Appaloosa</h2>
+        <p class="newsletter-subtitle">New arrivals and exclusive offers delivered to your inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your email address">
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared.js"></script>
+<script>
+// ---- ARTICLE CONTENT DATABASE ----
+const articleContent = {
+  'in-between-season': {
+    readTime: '8 min read',
+    body: `
+      <p>There is a particular kind of morning — neither cold enough for a coat nor warm enough to go without — that exposes the limitations of a wardrobe built on absolutes. This is the in-between season: the weeks between winter and spring, between summer's end and autumn's arrival. And it is, if we're honest, the most interesting time to dress.</p>
+      <h2>The Case for Layering</h2>
+      <p>Layering is often spoken of as a practical necessity — a way of managing body temperature when the day refuses to commit. But the most considered dressers treat it as something closer to composition. Each layer is a statement; together they form an argument.</p>
+      <p>A linen shirt worn under a tailored blazer, over wide-leg trousers — this is not improvisation. It is architecture. The trick is to work with materials that breathe, that move, that don't fight each other for attention.</p>
+      <blockquote><p>The goal is not to look warm. The goal is to look considered in any temperature the day might offer.</p></blockquote>
+      <h2>The Pieces That Always Work</h2>
+      <p>Our Classic Linen Shirt has, over the past two seasons, become the workhorse of the transitional wardrobe. It can be worn open over a simple tee, tucked into high-waisted trousers, or thrown over a cotton dress as a lightweight layer. It wrinkles beautifully — a quality that synthetic fabrics spend entire research budgets trying to imitate.</p>
+      <p>The Equestrian Jacket is another piece worth building around. Its weight — substantial enough to feel considered, light enough not to restrict — makes it the ideal outer layer when temperatures hover between 12 and 18 degrees. Which, in this part of the world, accounts for approximately half the year.</p>
+      <h2>On Colour in Transition</h2>
+      <p>The in-between season rewards neutral foundations. Cream, sand, warm grey, deep espresso — these are colours that absorb light differently as the day shifts from morning cool to afternoon warmth. They work in any direction. They need no particular sky to look correct.</p>
+      <p>Add one considered accent — a silk scarf in burgundy, a belt in cognac leather — and the outfit gains intention without sacrificing versatility. This is the discipline of the transitional wardrobe: nothing that only works in one light.</p>
+    `
+  },
+  'portuguese-artisans': {
+    readTime: '6 min read',
+    body: `
+      <p>The workshop sits in a narrow street in Braga, behind a door so unassuming you'd walk past it three times before noticing the small brass plate. Inside, the sound of looms. The smell of natural fibre, of machine oil, of something that can only be described as work that has been done here for a very long time.</p>
+      <h2>A Partnership Built on Patience</h2>
+      <p>We found António through a recommendation — the kind that travels slowly through small communities and arrives only when you've stopped expecting it. He has been weaving linen in the same building for thirty-one years. His daughter, Catarina, now works alongside him, learning the adjustments by feel rather than instruction.</p>
+      <p>Our first conversation about the Classic Linen Shirt took three months. Not because anything was difficult, but because António does not rush. He wanted to understand what we were trying to make before he agreed to make it. This is rare. This is, we've come to understand, the difference between a supplier and a maker.</p>
+      <blockquote><p>He held the sample up to the light for a long time. Then he said: the weave is too tight. It won't breathe the way linen should. He was right.</p></blockquote>
+      <h2>What Handwork Actually Means</h2>
+      <p>When we say a garment is handmade, we mean that human hands are involved at every critical moment: in the setting of the loom tension, in the inspection of each metre of cloth, in the final pressing. The machines assist; the people decide.</p>
+      <p>At the workshop in Braga, every piece of linen that leaves is touched no fewer than twelve times before it is folded and wrapped in paper. This is not efficiency. It is accountability — a chain of individual decisions that can be traced, if anything ever goes wrong, back to a specific person on a specific morning.</p>
+      <h2>The Future of the Partnership</h2>
+      <p>We are in the early stages of developing a new fabric with António — a linen-cotton blend with a slightly heavier weight, intended for our autumn pieces. Catarina has been working on the weave structure. We have seen three iterations so far. None of them is finished. We are not in a hurry.</p>
+    `
+  },
+  'on-slowness': {
+    readTime: '5 min read',
+    body: `
+      <p>Speed has become a form of status. The person who responds immediately, who is always available, who moves through their work and their days without apparent friction — this person is admired. Their busyness is read as importance. Their efficiency as proof of value.</p>
+      <p>We would like to suggest, gently but firmly, that this is wrong.</p>
+      <h2>The Argument for Deliberateness</h2>
+      <p>There is a quality of attention that only becomes available when you slow down. It is not passivity — slowness, properly understood, is intensely active. It is the decision to be fully present to what is in front of you, rather than already moving toward what comes next.</p>
+      <p>In clothing, this shows up as the difference between dressing and getting dressed. One is a practice; the other is a task. The practice involves touching the fabric, noticing how the light falls on it, choosing not because you are late but because this particular combination of colours and weights feels right for this particular day.</p>
+      <blockquote><p>A wardrobe built slowly is different in kind, not just degree, from one assembled in haste. The pieces know each other. They have been chosen with the others in mind.</p></blockquote>
+      <h2>What We Are Not Saying</h2>
+      <p>We are not arguing for inconvenience, or for a romantic primitivism that ignores the real demands of real lives. We are not suggesting you spend forty minutes deciding what to wear every morning.</p>
+      <p>We are suggesting that the time spent building a wardrobe — choosing carefully, returning things that don't quite work, waiting for the right piece rather than accepting the available one — is time that pays forward. The mornings become quicker, not slower, when every item in your wardrobe belongs.</p>
+      <h2>On Buying Less</h2>
+      <p>The slow approach to dressing almost always means buying less. Not because of any ethical programme, but because the standard rises. When you know what you are looking for — the particular weight of fabric, the precise shade, the construction that will survive repeated washing — most of what is available does not qualify. This is not deprivation. It is discernment.</p>
+    `
+  },
+  'natural-fibres': {
+    readTime: '4 min read',
+    body: `
+      <p>There is a familiar argument made in defence of synthetic fabrics: they are more durable, more wrinkle-resistant, more consistent in their behaviour. They dry faster. They require less care. They are, in the most narrow technical sense, more convenient.</p>
+      <p>We have never found this argument convincing. Here is why.</p>
+      <h2>What Fibres Do</h2>
+      <p>Natural fibres — cotton, linen, silk, wool — are the products of living systems. They carry within their structure something of the organism that produced them: the way wool regulates temperature because the animal it came from needed to regulate temperature; the way linen breathes because the flax plant is itself a study in structural efficiency.</p>
+      <p>This is not metaphor. The thermoregulating properties of wool are measurably superior to those of polyester. The breathability of linen is not an aesthetic preference — it is a physical fact, a consequence of the hollow core fibre structure that characterises the flax plant.</p>
+      <blockquote><p>Synthetic fabrics are good at imitating the appearance of natural ones. They are not good at imitating what natural fibres actually do.</p></blockquote>
+      <h2>The Question of Longevity</h2>
+      <p>A well-made linen shirt, properly cared for, will last twenty years. It will change over those years — becoming softer, more relaxed in its drape, developing a patina that new fabric cannot replicate. This is not deterioration. It is the garment becoming itself.</p>
+      <p>A polyester shirt does not do this. It maintains its initial appearance for a time, then degrades suddenly: pilling, fading in uneven patches, losing the structural properties that made it functional. The comparison in longevity is not close.</p>
+      <h2>Our Commitment</h2>
+      <p>Every piece in the Appaloosa collection is made from natural fibres. This is not a marketing position. It is a technical and ethical commitment, one that we intend to maintain regardless of what becomes fashionable in material sourcing.</p>
+    `
+  },
+  'equestrian-jacket': {
+    readTime: '3 min read',
+    body: `
+      <p>The Equestrian Jacket was designed with one question in mind: what does it take for a single outer layer to work in every season, at every hour of the day? The answer, after eighteen months of development, is specificity of weight, cut, and cloth.</p>
+      <h2>Spring: The Transitional Layer</h2>
+      <p>In March and April, the jacket works as a primary outer layer — substantial enough for mornings at 10 degrees, comfortable enough to carry through afternoons at 18. Pair it with our Classic Linen Shirt and Wide-Leg Trouser for a daytime look that requires no adjustment as the temperature shifts.</p>
+      <h2>Summer: The Evening Layer</h2>
+      <p>In the warmer months, the jacket moves to evening duty. Over a simple cotton tee or a light dress, it handles the drop in temperature that comes after sunset — especially in stone cities that release their warmth slowly. It folds flat into a bag when not needed.</p>
+      <blockquote><p>The mark of a truly useful piece is that it costs you nothing to bring it. The Equestrian Jacket weighs 340 grams. You will forget it is in your bag until you need it.</p></blockquote>
+      <h2>Autumn: The Primary Statement</h2>
+      <p>October and November are the jacket's native season. The weight, which feels light in July, becomes exactly right when the light changes and the mornings require a decision. Wear it over a Merino Crew Neck for the colder end of its range.</p>
+      <h2>Winter: The Inner Layer</h2>
+      <p>In the coldest months, the jacket goes underneath a heavier coat rather than over lighter layers. Its cut — fitted through the shoulders, with enough room through the body for a sweater — was designed with this use in mind. A piece that only works as outerwear is only half as useful as it could be.</p>
+    `
+  },
+  'appaloosa-horse': {
+    readTime: '6 min read',
+    body: `
+      <p>The Appaloosa is one of the oldest horse breeds in recorded history. Its distinctive spotted coat — the result of a specific genetic combination that produces what is called the leopard complex — appears in cave paintings dating to 17,000 BCE. The ancient Persians bred them. The Nez Perce people of North America refined them into some of the most capable horses on the continent.</p>
+      <h2>A Symbol Across Cultures</h2>
+      <p>What strikes us about the Appaloosa, across its long history, is that it has never been merely useful. It has always been beautiful. The spots — irregular, individual, impossible to predict from one horse to the next — make each animal singular. No two Appaloosas have the same coat. This is a feature, not an inconsistency.</p>
+      <p>The Nez Perce valued the Appaloosa for its endurance and intelligence as much as for its appearance. It was a horse that could carry you across difficult terrain and still look remarkable when you arrived. This combination — utility and beauty, held together without compromise — is what drew us to the name.</p>
+      <blockquote><p>We are not interested in clothing that is merely practical, or merely beautiful. The Appaloosa reminded us that these qualities are not in tension. They are the same thing, properly understood.</p></blockquote>
+      <h2>What We Took from the Name</h2>
+      <p>When we chose Appaloosa as the name for this brand, we were not thinking of equestrian culture specifically — though we respect it. We were thinking of the broader quality the horse represents: distinctiveness that is not performed, beauty that is structural rather than decorative, a character that holds up under use.</p>
+      <p>These are the qualities we try to build into every piece. Whether we succeed is for you to judge. But the aspiration is clear: something that carries you through the day with both capability and grace, and that looks better, not worse, for having been worn.</p>
+      <h2>The Spotted Heritage</h2>
+      <p>The spot pattern that gives the Appaloosa its name follows no fixed template. Blanket patterns, leopard patterns, snowflake patterns, marble patterns — each is a variation on the same genetic theme, expressed differently in every individual animal. We find this instructive. The best design systems are like this: consistent in their underlying logic, endlessly variable in their expression.</p>
+    `
+  }
+};
+
+// ---- RENDER ARTICLE ----
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug') || 'in-between-season';
+
+  // Find article metadata from shared allArticles
+  const meta = allArticles.find(a => a.slug === slug) || allArticles[0];
+  const content = articleContent[meta.slug] || articleContent['in-between-season'];
+
+  // Set page title
+  document.title = `Appaloosa — ${meta.title}`;
+
+  // Populate hero
+  document.getElementById('articleTag').textContent = meta.tag;
+  document.getElementById('articleTitle').textContent = meta.title;
+  document.getElementById('articleDate').textContent = meta.date;
+  document.getElementById('articleRead').textContent = content.readTime;
+
+  // Populate body
+  document.getElementById('articleBody').innerHTML = content.body;
+
+  // Render related articles (exclude current)
+  const related = allArticles.filter(a => a.slug !== slug).slice(0, 3);
+  document.getElementById('relatedGrid').innerHTML = related.map(a => `
+    <a class="article-card" href="article.html?slug=${a.slug}" style="display:block;text-decoration:none;color:inherit;">
+      <div class="article-card-img"></div>
+      <span class="article-card-tag">${a.tag}</span>
+      <h3 class="article-card-title">${a.title}</h3>
+      <div class="article-card-meta">${a.date}</div>
+    </a>
+  `).join('');
+});
+</script>
+</body>
+</html>
